@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login Confirmation</h1>
+        </div>
+        <div class="content">
+            <p>Hello {{ username }},</p>
+            <p>Your login was successful. Thank you for using our service.</p>
+            <p>If you didn't make this login, please contact us immediately.</p>
+        </div>
+        <div class="footer">
+            <p>Your IP Address: {{ ip_address }}</p>
+        </div>
+    </div>
+</body>
+</html>

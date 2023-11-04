@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags dan judul halaman -->
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta property="og:title" content="I Reload Cell" />
+    <meta property="og:site_name" content="I Reload Cell">
+    <meta property="og:image" content="/static/images/logo_1.png" />
+    <meta property="og:description"
+        content="I Reload Cell adalah web platform penukaran point eksklusif bagi pembeli di toko I Reload Cell. Dengan I Reload Cell, Anda dapat menukarkan point yang Anda peroleh dari setiap pembelian Anda di toko I Reload Cell untuk berbagai macam hadiah menarik." />
+    <meta name="description" content="I Reload Cell hadir untuk memberikan pengalaman terbaik kepada pelanggan kami." />
+    <meta name="keywords" content="">
+    <title>Login - I Reload Cell</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon/ireload.ico">
+    <!-- CSS Eksternal -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/static/css/style_login.css">
+
+</head>
+
+<body>
+    <!-- Bagian Header -->
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <a class="navbar-brand" href="/">I Reload Cell</a>
+                <!-- Tombol Navigasi dan Daftar Menu -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Bagian Konten -->
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header text-center bg-primary text-white">Login</div>
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <!-- Form Login -->
+                            <form action="/login" method="POST">
+                                <!-- Input Username -->
+                                <div class="form-group">
+                                    <label for="username" style="font-weight: bold;">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
+                                <!-- Input Password -->
+                                <div class="form-group">
+                                    <label for="password" style="font-weight: bold;">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <div class="d-flex justify-content-between">
+                                        <!-- Tautan Lupa Username dan Password -->
+                                        <p class="mt-3 text-left"><a href="/forgot_username.html">Lupa Username ?</a></p>
+                                        <p class="mt-3 text-right"><a href="/forgot_password.html">Lupa Password ?</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- Spinner Loading -->
+                                <div class="spinner-container">
+                                    <div class="spinner-border text-primary mb-2" role="status"
+                                        id="loadingSpinnerLogin" style="display: none;"></div>
+                                </div>
+                                <!-- Tombol Login -->
+                                <button type="submit" class="btn btn-primary btn-block" id="loginBtn" disabled>Login
+                                </button>
+                                <!-- Garis Pembatas -->
+                                <hr style="border: 1px solid #b8c2cc; margin-top: 20px;">
+                                <!-- Tautan Daftar -->
+                                <p class="mt-3 text-center">Belum punya akun? <a href="/signup">Daftar Sekarang</a></p>
+                                <!-- Garis Pembatas -->
+                                <hr style="border: 1px solid #b8c2cc;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian Footer -->
+    <div class="footer">
+        <div class="container">
+            <p>&copy; I Reload Cell 2023. <a href="https://reloadcell.my.id/">All rights reserved.</a></p>
+        </div>
+    </div>
+
+    <!-- Skrip JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    const message = "{{ messages[0][1] }}";
+    let allowOutsideClick = false;
+
+    if (message === 'Login Berhasil! Anda akan diarahkan ke halaman dashboard dalam hitungan mundur dari 5 detik.') {
+        allowOutsideClick = true; // Memungkinkan penutupan pop-up dengan klik di luar area pop-up setelah 5 detik
+        Swal.fire({
+            title: 'Login Berhasil!',
+            text: 'Anda akan diarahkan ke halaman dashboard, Mohon Tunggu...',
+            icon: 'success',
+            timer: 3000, // Durasi notifikasi (ms)
+            timerProgressBar: true, // Menampilkan progress bar durasi
+            showConfirmButton: false, // Tidak menampilkan tombol OK
+            showClass: {
+                popup: 'animate__animated animate__fadeIn'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOut'
+            },
+            allowOutsideClick: allowOutsideClick // Memungkinkan penutupan pop-up dengan klik di luar area pop-up setelah 5 detik
+        }).then(() => {
+            window.location.href = '/dashboard';
+        });
+    } else if (message === 'Username atau password salah. Periksa kembali username dan password Anda.') {
+        allowOutsideClick = false; // Mencegah penutupan pop-up dengan klik di luar area pop-up
+        Swal.fire({
+            title: 'Error!',
+            text: 'Username atau password salah. Periksa kembali username dan password Anda.',
+            icon: 'error',
+            timer: 3000, // Durasi notifikasi (ms)
+            timerProgressBar: true, // Menampilkan progress bar durasi
+            showConfirmButton: false, // Tidak menampilkan tombol OK
+            showClass: {
+                popup: 'animate__animated animate__fadeIn'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOut'
+            },
+            allowOutsideClick: allowOutsideClick // Mencegah penutupan pop-up dengan klik di luar area pop-up
+        });
+    } else if (message === 'Akun Anda tidak aktif. Hubungi administrator.') {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Akun Anda tidak aktif. Hubungi administrator.',
+            icon: 'error',
+            timer: 3000, // Durasi notifikasi (ms)
+            timerProgressBar: true, // Menampilkan progress bar durasi
+            showConfirmButton: false, // Tidak menampilkan tombol OK
+            showClass: {
+                popup: 'animate__animated animate__fadeIn'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOut'
+            },
+            allowOutsideClick: allowOutsideClick // Mencegah penutupan pop-up dengan klik di luar area pop-up
+        });
+
+    }
+    {% endif %}
+    {% endwith %}
+
+    // Logika untuk memeriksa isian username dan password
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const loginBtn = document.getElementById("loginBtn");
+    const loadingSpinnerLogin = document.getElementById("loadingSpinnerLogin");
+
+    usernameInput.addEventListener('input', toggleLoginButton);
+    passwordInput.addEventListener('input', toggleLoginButton);
+
+    // Fungsi untuk mengaktifkan atau menonaktifkan tombol "Login" berdasarkan isian
+    function toggleLoginButton() {
+        if (usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
+            loginBtn.disabled = false;
+        } else {
+            loginBtn.disabled = true;
+        }
+    }
+
+    // Logika saat tombol "Login" diklik
+    loginBtn.addEventListener('click', function () {
+        loginBtn.style.display = 'none';
+        loadingSpinnerLogin.style.display = 'block';
+    });
+
+    // Mengambil alamat IP pengunjung dan mengirimkannya ke server
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const userIP = data.ip;
+            fetch('/log-visit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ip: userIP }),
+            });
+        });
+});
+
+
+
+
+    </script>
+</body>
+
+</html>

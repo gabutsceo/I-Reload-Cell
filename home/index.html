@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+/* Add your custom styles here */
+body{margin-top:20px;}
+.deneb_footer .widget_wrapper {
+background-repeat: no-repeat;
+background-size: cover;
+padding-top: 200px;
+padding-bottom: 70px;
+}
+@media (max-width: 767px) {
+.deneb_footer .widget_wrapper .widget {
+margin-bottom: 40px;
+}
+}
+.deneb_footer .widget_wrapper .widget .widget_title {
+margin-bottom: 30px;
+}
+.deneb_footer .widget_wrapper .widget .widget_title h4 {
+font-weight: bold;
+}
+.deneb_footer .widget_wrapper .widget .widget_title h4:after {
+content: "";
+display: block;
+max-width: 38px;
+height: 2px;
+margin-top: 5px;
+}
+.deneb_footer .widget_wrapper .widegt_about p {
+margin-bottom: 20px;
+}
+.deneb_footer .widget_wrapper .widegt_about .social li {
+display: inline-block;
+margin-right: 10px;
+}
+.deneb_footer .widget_wrapper .widegt_about .social li a {
+display: block;
+width: 30px;
+height: 30px;
+line-height: 30px;
+text-align: center;
+border-radius: 50%;
+background-color: #f9e6d4;
+color: #fba543;
+font-size: 14px;
+-webkit-transition: all all 0.5s ease-out 0s;
+-moz-transition: all all 0.5s ease-out 0s;
+-ms-transition: all all 0.5s ease-out 0s;
+-o-transition: all all 0.5s ease-out 0s;
+transition: all all 0.5s ease-out 0s;
+}
+.deneb_footer .widget_wrapper .widegt_about .social li a:hover,
+.deneb_footer .widget_wrapper .widegt_about .social li a:focus {
+background-image: -moz-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+background-image: -webkit-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+background-image: -ms-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+color: #fff;
+box-shadow: 2.5px 4.33px 15px 0px rgba(254, 176, 0, 0.4);
+}
+.deneb_footer .widget_wrapper .widget_link ul li {
+margin-bottom: 5px;
+}
+.deneb_footer .widget_wrapper .widget_link ul li a {
+text-transform: capitalize;
+color: #7a808d;
+}
+.deneb_footer .widget_wrapper .widget_link ul li a:hover,
+.deneb_footer .widget_wrapper .widget_link ul li a:focus {
+color: #feb000;
+}
+.deneb_footer .widget_wrapper .widget_contact .contact_info .single_info {
+max-width: 250px;
+display: flex;
+flex-wrap: wrap;
+margin-bottom: 20px;
+}
+.deneb_footer .widget_wrapper .widget_contact .contact_info .single_info .icon {
+font-size: 12px;
+color: #feb000;
+margin-right: 10px;
+}
+.deneb_footer .widget_wrapper .widget_contact .contact_info .single_info .info p a {
+color: #7a808d;
+}
+.deneb_footer .widget_wrapper .widget_contact .contact_info .single_info .info p span {
+display: block;
+}
+
+.deneb_footer .copyright_area {
+background: #edecf0;
+padding: 10px 0;
+}
+.deneb_footer .copyright_area .copyright_text {
+text-align: center;
+}
+.deneb_footer .copyright_area .copyright_text p {
+color: #011a3e;
+}
+.deneb_footer .copyright_area .copyright_text p span {
+color: #feb000;
+}
+.deneb_cta .cta_wrapper {
+padding: 45px 50px 42px;
+max-width: 970px;
+border-radius: 15px;
+margin: auto;
+margin-bottom: -135px;
+position: relative;
+background-image: -moz-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+background-image: -webkit-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+background-image: -ms-linear-gradient(0deg, #ffbd27 0%, #feb000 100%);
+box-shadow: 2.5px 4.33px 15px 0px rgba(254, 176, 0, 0.4);
+z-index: 1;
+}
+.deneb_cta .cta_wrapper:after {
+content: "";
+background-position: bottom;
+width: 100%;
+height: 100%;
+position: absolute;
+bottom: 0;
+left: 0;
+z-index: -1;
+}
+.deneb_cta .cta_wrapper .cta_content h3 {
+color: #fff;
+font-weight: bold;
+}
+@media (max-width: 767px) {
+.deneb_cta .cta_wrapper .cta_content h3 {
+font-size: 24px;
+}
+}
+.deneb_cta .cta_wrapper .cta_content h3:after {
+content: "";
+display: block;
+max-width: 110px;
+height: 2px;
+margin-top: 13px;
+margin-bottom: 24px;
+}
+.deneb_cta .cta_wrapper .cta_content p {
+color: #fff;
+}
+.deneb_cta .cta_wrapper .button_box {
+float: right;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.deneb_cta .cta_wrapper .button_box {
+float: none;
+text-align: left;
+margin-top: 30px;
+}
+}
+@media (max-width: 767px) {
+.deneb_cta .cta_wrapper .button_box {
+float: none;
+text-align: center;
+margin-top: 30px;
+}
+}
+.deneb_cta .cta_wrapper .button_box .deneb_btn {
+background: #fff;
+color: #011a3e;
+}
+.deneb_cta .cta_wrapper .button_box .deneb_btn:hover,
+.deneb_cta .cta_wrapper .button_box .deneb_btn:focus {
+box-shadow: 2.5px 4.33px 15px 0px rgba(0, 0, 0, 0.15);
+}
+
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+.header {
+    font-size: 16px;
+}
+
+.header .navbar-brand,
+.header .nav-link {
+color: white; /* Warna teks putih */
+}
+
+.content {
+flex: 1;
+}
+
+.footer {
+background-color: #2c353d;
+color: #f8f9fa;
+padding: 10px 0;
+text-align: center;
+width: 100%;
+position: fixed;
+z-index: 1;
+bottom: 0;
+}
+
+.footer p {
+margin: 0;
+}
+.navbar-collapse {
+color: white;
+}
+
+body {
+background-color: #e3e6ec;
+position: relative;
+background-size: cover;
+font-family: Arial, sans-serif;
+background-image: url(https://www.bootdey.com/img/overlay.svg), linear-gradient(45deg, #eff3f9 0%, #eff3f9 100%);
+z-index: 0;
+padding: 3rem 0 2rem;
+}
+.content-banner {
+    background: url(/static/images/logo_1.png) center/cover no-repeat;
+    height: 247px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+    
+    .qa-card {
+        margin-bottom: 20px;
+    }
+    
+    .qa-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .qa-item:hover {
+        background-color: #e5e5e5;
+    }
+    
+    .qa-question {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .qa-answer {
+        display: none;
+    }
+    
+
+</style>
+</head>
+
+<body>
+    
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <a class="navbar-brand" href="javascript:void(0);" onclick="window.location.href = window.location.origin + '/';">I Reload Cell</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+        <!-- Bagian Konten Banner -->
+        <section class="content-banner">
+            <h1>Selamat Datang di I Reload Cell!</h1>
+            <p>Temukan berbagai penawaran menarik dan hadiah eksklusif di toko kami.</p>
+        </section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<section class="deneb_cta">
+    <div class="container">
+        <div class="cta_wrapper">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="cta_content">
+                        <h3>Memiliki Proyek di Benak Anda ?</h3>
+                        <p>Ayo wujudkan ide-ide hebat Anda bersama kami! I Reload Cell bebas, penuh semangat, dan siap menginspirasi setiap langkah Anda</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="button_box">
+                        <a href="#" class="btn btn-warning">Hire Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <footer class="deneb_footer">
+        <div class="widget_wrapper" style="background-image: url(http://demo.tortoizthemes.com/deneb-html/deneb-ltr/assets/images/footer_bg.png);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="widget widegt_about">
+                            <div class="widget_title">
+                                <img src="../static/images/logo_1.png" class="img-fluid" alt="">
+                            </div>
+                            <p><strong> Reload Cell adalah platform penukaran point eksklusif bagi pembeli di toko I Reload Cell. Kami hadir dengan visi dan misi untuk memberikan pengalaman terbaik kepada pelanggan kami.</p></strong>                     
+                            </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="widget widget_link">
+                            <div class="widget_title">
+                                <h4>Links</h4>
+                            </div>
+                            <ul>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="https://www.liputanterhangat.com/">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="widget widget_contact">
+                            <div class="widget_title">
+                                <h4>Contact Us</h4>
+                            </div>
+                            <div class="contact_info">
+                                <div class="single_info">
+                                    <div class="icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="info">
+                                        <p><a href="tel:+919246147999">+62 813-2850-5459</a></p>
+                                    </div>
+                                </div>
+                                <div class="single_info">
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="info">
+                                        <p><a href="mailto:info@reloadcell.my.id">info@reloadcell.my.id</a></p>
+                                    </div>
+                                </div>
+                                <div class="single_info">
+                                    <div class="icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info">
+                                        <p>Jalan Kramatsari 3 No 52,<span>Jawa Tengah,Indonesia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Q&A</h2>
+            <!-- Kartu Q&A -->
+            <div class="qa-card">
+                <div class="qa-item">
+                    <div class="qa-question">Apa itu I Reload Cell?</div>
+                    <div class="qa-answer">I Reload Cell adalah platform penukaran point eksklusif bagi pembeli di toko I Reload Cell. Kami memungkinkan Anda untuk menukarkan poin yang Anda peroleh dari setiap pembelian di toko kami untuk berbagai macam hadiah menarik.</div>
+                </div>
+            </div>
+        
+            <div class="qa-card">
+                <div class="qa-item">
+                    <div class="qa-question">Bagaimana cara mendapatkan poin di I Reload Cell?</div>
+                    <div class="qa-answer">Pelanggan mendapatkan poin setiap kali mereka membeli produk di toko I Reload Cell. Setiap pembelian Anda akan diberikan code claim untuk mendapatkan point.</div>
+                </div>
+            </div>
+        
+            <div class="qa-card">
+                <div class="qa-item">
+                    <div class="qa-question">Bagaimana cara memasukkan code claim untuk mendapatkan point?</div>
+                    <div class="qa-answer">
+                        <p>Anda dapat memasukkan code claim dengan mengikuti langkah-langkah berikut:</p>
+                        <ol>
+                            <li>Login ke akun I Reload Cell Anda.</li>
+                            <li>Klik menu "Dashboard".</li>
+                            <li>Klik tombol "Claim Point".</li>
+                            <li>Masukkan code claim Anda di kolom yang tersedia.</li>
+                            <li>Klik tombol "Klaim Point".</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="qa-card">
+                <div class="qa-item">
+                    <div class="qa-question">Bagaimana cara menukarkan poin untuk mendapatkan hadiah?</div>
+                    <div class="qa-answer">Anda dapat menukarkan poin dengan login ke akun Anda di I Reload Cell dan mengunjungi halaman "Penukaran Point". Di sana, Anda dapat memilih hadiah yang Anda inginkan dan menukarkan poin Anda.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright_text">
+                            <p>&copy; I Reload Cell 2023. <a href="https://reloadcell.my.id/">All rights reserved.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+
+    <!-- Bootstrap JS and other scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+            // Ambil semua elemen kartu Q&A
+const qaItems = document.querySelectorAll('.qa-item');
+
+// Tambahkan event listener untuk setiap kartu Q&A
+qaItems.forEach(item => {
+    item.addEventListener('click', () => {
+        // Toggle tampilan jawaban ketika kartu Q&A diklik
+        const answer = item.querySelector('.qa-answer');
+        answer.style.display = (answer.style.display === 'block' || answer.style.display === '') ? 'none' : 'block';
+    });
+});
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        const userIP = data.ip;
+        // Kirim alamat IP pengunjung ke server
+        fetch('/log-visit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ip: userIP }),
+        });
+    });
+
+</script>
+</body>
+
+</html>

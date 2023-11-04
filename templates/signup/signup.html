@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta property="og:title" content="I Reload Cell" />
+    <meta property="og:site_name" content="I Reload Cell">
+    <meta property="og:image" content="/static/images/logo_1.png" />
+    <meta property="og:description" content="I Reload Cell adalah web platform penukaran point eksklusif bagi pembeli di toko I Reload Cell. Dengan I Reload Cell, Anda dapat menukarkan point yang Anda peroleh dari setiap pembelian Anda di toko I Reload Cell untuk berbagai macam hadiah menarik." />
+    <meta name="description" content="I Reload Cell hadir untuk memberikan pengalaman terbaik kepada pelanggan kami." />
+    <meta name="keywords" content="">
+    <title>Sign Up - I Reload Cell</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon/ireload.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/static/css/style_signup.css">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <a class="navbar-brand" href="javascript:void(0);" onclick="window.location.href = window.location.origin + '/';">I Reload Cell</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    
+    <!-- Modal Pop-Up -->
+    <div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="welcomeModalLabel">I Reload Cell</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bergabunglah dengan <a href="https://reloadcell.my.id/">I Reload Cell</a> Poin dan dapatkan hadiah menarik dari setiap transaksi Anda!</p>
+                    <ul>
+                        <li><a href="https://reloadcell.my.id/">Mendapatkan poin</a> dari setiap transaksi pembelian tagihan listrik, token listrik, top up e-wallet, dan top up saldo driver</li>
+                        <li><a href="https://reloadcell.my.id/">Menukarkan poin</a> dengan berbagai hadiah menarik</li>
+                        <li><a href="https://reloadcell.my.id/">Mendapatkan informasi terbaru</a> tentang promo dan event <a href="https://reloadcell.my.id/">I Reload Cell</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Card untuk Signup -->
+<div class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center bg-primary text-white">Buat Akun Sekarang!</div>
+                    <br>
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <form action="/signup" method="POST" id="signupForm">
+                            <div class="form-group">
+                                <label for="username" style="font-weight: bold;">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" style="font-weight: bold;">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <!-- Checkbox untuk menunjukkan persetujuan T&C -->
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" id="agree_tnc" name="agree_tnc">
+                                <label class="form-check-label" for="agree_tnc">Saya telah membaca dan menyetujui T&C</label>
+                            </div>
+                            <br>
+                            <div class="spinner-container">
+                                <div class="spinner-border text-primary" role="status" id="signupSpinner" style="display: none;"></div>
+                            </div>
+                            <!-- Tombol untuk melakukan pendaftaran -->
+                            <button type="submit" class="btn btn-primary btn-block" id="signupBtn" disabled>Daftar Sekarang</button>
+                            <hr style="border: 1px solid #b8c2cc; margin-top: 20px;">
+                            <p class="mt-3 text-center">Sudah punya akun? <a href="/login">Login Disini</a></p>
+                            <hr style="border: 1px solid #b8c2cc;">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal T&C -->
+<div class="modal fade" id="tncModal" tabindex="-1" role="dialog" aria-labelledby="tncModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tncModalLabel">Syarat dan Ketentuan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Syarat dan Ketentuan Pengguna "I Reload Cell"</h2>
+                <p>Dengan menggunakan layanan <a href="https://reloadcell.my.id/">I Reload Cell</a> dan situs web terkait ("Layanan"), Anda setuju untuk mematuhi dan terikat oleh syarat dan ketentuan berikut. Harap baca dengan seksama sebelum menggunakan Layanan kami.</p>
+                <ol>
+                  <li><strong>Setiap pengguna</strong> yang ingin menggunakan Layanan ini harus membuat akun dengan memberikan informasi yang akurat dan lengkap. <strong>Anda bertanggung jawab untuk menjaga kerahasiaan kata sandi akun Anda.</strong></li>
+                  <li><strong>Kami menghormati</strong> privasi pengguna kami. <strong>Informasi yang Anda berikan akan dijaga kerahasiaannya sesuai dengan kebijakan privasi kami.</strong></li>
+                  <li><strong>Anda bertanggung jawab</strong> untuk menjaga keamanan akun Anda. <strong>Jangan memberikan informasi login kepada orang lain</strong> dan segera hubungi kami jika Anda mencurigai adanya penggunaan akun yang tidak sah.</li>
+                  <li><strong>Poin yang Anda kumpulkan</strong> dapat digunakan untuk penukaran berbagai produk dan layanan yang tersedia di toko <a href="https://reloadcell.my.id/"> I Reload Cell</a>. Poin tidak dapat ditukar dengan uang tunai atau transfer ke akun bank.</li>
+                  <li><strong>Kami berhak</strong> untuk mengubah syarat dan ketentuan ini tanpa pemberitahuan terlebih dahulu. Perubahan tersebut akan berlaku sejak tanggal publikasi di situs web kami.</li>
+                  <li><strong>Kami tidak bertanggung jawab</strong> atas kerugian atau kerusakan yang timbul dari atau sehubungan dengan penggunaan Layanan kami.</li>
+                </ol>
+                <p><strong><span style="color: red;">Dengan menggunakan Layanan kami, Anda dianggap telah membaca, memahami, dan menyetujui syarat dan ketentuan ini. Jika Anda tidak setuju dengan syarat dan ketentuan ini, harap tidak melanjutkan penggunaan Layanan kami.</span></strong></p>
+              </div>
+              
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Setuju</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+    <div class="footer">
+        <div class="container">
+            <p>&copy; I Reload Cell 2023. <a href="https://reloadcell.my.id/">All rights reserved.</a></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and other scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if there are messages to display
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        const message = "{{ messages[0] }}"; // Assuming there is only one message
+        let icon = 'info'; // Default icon
+        let title = 'Message'; // Default title
+
+        // Determine the icon and title based on the message content
+        if (message.includes('Username tidak valid') || message.includes('Password tidak valid') || message.includes('Password harus mengandung setidaknya satu huruf besar.') || message.includes('Password harus mengandung setidaknya satu huruf kecil.') || message.includes('Password harus mengandung setidaknya satu angka.') || message.includes('Password harus mengandung setidaknya satu karakter khusus.')) {
+            icon = 'warning';
+            title = 'Peringatan !';
+        } else if (message.includes('sudah ada. Silakan pilih username lain.')) {
+            icon = 'info';
+            title = 'Info !';
+        } else if (message.includes('Silahkan login menggunakan username Anda:')) {
+            icon = 'success';
+            title = 'Berhasil !';
+        }
+
+        Swal.fire({
+            title: title,
+            text: message,
+            icon: icon,
+        });
+    {% else %}
+        // Tampilkan welcomemodal hanya jika tidak ada pesan notifikasi
+        $('#welcomeModal').modal('show');
+    {% endif %}
+    {% endwith %}
+});
+
+// Tambahkan event listener untuk peristiwa klik checkbox
+document.getElementById('agree_tnc').addEventListener('change', function() {
+    // Jika checkbox dicentang, tampilkan modal
+    if (this.checked) {
+        $('#tncModal').modal('show');
+    }
+});
+
+// Tambahkan event listener untuk tombol Daftar Sekarang
+document.querySelector('.btn.btn-primary.btn-block').addEventListener('click', function(event) {
+    // Cek apakah checkbox sudah dicentang
+    if (!document.getElementById('agree_tnc').checked) {
+        // Jika checkbox tidak dicentang, tampilkan pesan kesalahan menggunakan Swal.fire
+        event.preventDefault();
+        Swal.fire({
+            title: 'Kesalahan !',
+            text: 'Anda harus menyetujui T&C sebelum mendaftar.',
+            icon: 'error',
+        });
+    }
+});
+
+        // Ambil tombol "Daftar Sekarang" dan spinner
+    document.addEventListener('DOMContentLoaded', function() {
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const agreeTncCheckbox = document.getElementById("agree_tnc");
+    const signupBtn = document.getElementById("signupBtn");
+    const signupSpinner = document.getElementById("signupSpinner");
+
+    // Tambahkan event listener untuk memeriksa isian username, password, dan persetujuan T&C
+    usernameInput.addEventListener("input", toggleSignupButton);
+    passwordInput.addEventListener("input", toggleSignupButton);
+    agreeTncCheckbox.addEventListener("change", toggleSignupButton);
+
+    // Fungsi untuk mengaktifkan atau menonaktifkan tombol "Daftar Sekarang" berdasarkan isian dan persetujuan T&C
+    function toggleSignupButton() {
+        if (usernameInput.value.trim() !== "" && passwordInput.value.trim() !== "" && agreeTncCheckbox.checked) {
+            signupBtn.disabled = false;
+        } else {
+            signupBtn.disabled = true;
+        }
+    }
+
+    // Tambahkan event listener untuk tindakan saat tombol "Daftar Sekarang" diklik
+    signupBtn.addEventListener("click", function () {
+        // Sembunyikan tombol "Daftar Sekarang" dan tampilkan spinner
+        signupBtn.style.display = "none";
+        signupSpinner.style.display = "inline-block";
+    });
+});
+
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        const userIP = data.ip;
+        // Kirim alamat IP pengunjung ke server
+        fetch('/log-visit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ip: userIP }),
+        });
+    });
+    
+</script>
+
+</body>
+
+</html>

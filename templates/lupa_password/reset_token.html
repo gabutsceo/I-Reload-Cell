@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kode Verifikasi Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #24eccb;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .content {
+            padding: 1px;
+            margin: 1px;
+            margin-top: auto;
+            max-width: auto;
+            position: relative;
+        }
+
+        .footer {
+            background-color: #24eccb;
+            text-align: center;
+            color: white;
+            padding: 8px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: -7px;
+            border-radius: 0 0 10px 10px;
+
+        }
+        .footer-card {
+            margin-bottom: 15px;
+        }
+
+        .footer-card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .token-container {
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+
+        .token {
+            font-size: 28px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+
+        .reset-link {
+            color: #2fa1ff;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            margin: 0 10px;
+        }
+        .reset-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .card {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="logo" src="cid:logo" alt="iReload Logo">
+            <h1>Kode Verifikasi Password</h1>
+        </div>
+        <div class="content">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Halo <strong>{{ full_name }}</strong>,</h5>
+                    <p class="card-text">Kami telah menerima permintaan Anda untuk mereset kata sandi.</p>
+                    <p>Berikut adalah Kode Verifikasi Akun Anda:</p>
+                    <div class="token-container">
+                        <p class="token">{{ reset_token }}</p>
+                    </div>
+                    <p>Kode ini hanya berlaku selama 15 menit. Gunakan segera untuk mengatur ulang kata sandi Anda.</p>
+                    <p>Jika Anda tidak meminta pengaturan ulang kata sandi, Anda bisa mengabaikan email ini.</p>
+                    <p>Terima kasih,<br>Tim Dukungan I Reload Cell</p>
+                    <a href="{{ reset_link }}" class="reset-button">Ganti Password</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-card">
+                <p>Jalan Kramatsari 3 No 52, Jawa Tengah, Indonesia</p>
+                <p>Phone Number : +62 813-2850-5459</p>
+                <p>Email: info@reloadcell.my.id</p>
+                <p>&copy; I Reload Cell 2023.</p>
+            </div>
+            <div class="footer-card">
+                <hr></hr>
+                <p>This email was sent automatically. Please do not reply to this email.</p>
+                <hr></hr>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/ireloadcell" target="_blank"><img
+                        src="https://img.icons8.com/ios-filled/24/ffffff/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/ireloadcell/" target="_blank"><img
+                        src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                <a href="https://twitter.com/ireloadcell" target="_blank"><img
+                        src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </div>
+
+    
+
+        
+</body>
+
+</html>

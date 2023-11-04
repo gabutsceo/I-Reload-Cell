@@ -1,0 +1,129 @@
+body {
+background-color: #e3e6ec;
+position: relative;
+background-size: cover;
+font-family: Arial, sans-serif;
+background-image: url(https://www.bootdey.com/img/overlay.svg), linear-gradient(45deg, #eff3f9 0%, #eff3f9 100%);
+z-index: 0;
+padding: 3rem 0 2rem;
+}
+
+.header {
+padding: 10px 0;
+font-size: 16px;
+}
+
+.header .navbar-brand,
+.header .nav-link {
+color: white;
+}
+
+.content {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 1;
+padding: 0;
+width: 80%;
+max-width: 1300px;
+margin: auto;
+
+
+}
+
+
+.footer {
+background-color: #2c353d;
+color: #f8f9fa;
+padding: 10px 0;
+text-align: center;
+width: 100%;
+position: fixed;
+z-index: 1;
+bottom: 0;
+}
+
+.footer p {
+margin: 0;
+}
+.about-card {
+margin-top: 20px;
+margin-bottom: 20px;
+padding: 20px;
+background-color: #fff;
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+font-style: italic;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+font-size: 20px;
+}
+
+.content-banner {
+background: url('path/to/your/image.jpg') center/cover no-repeat;
+height: 300px; /* Sesuaikan tinggi banner dengan kebutuhan Anda */
+color: rgb(0, 0, 0);
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.content-banner h1 {
+font-weight: 300;
+font-size: 33px;
+color: #000000;
+line-height: 1.2;
+position: relative;
+z-index: 2;
+margin: 0 0 20px;
+}
+
+
+.qa-card {
+margin-bottom: 20px;
+}
+
+.qa-item {
+background-color: #f9f9f9;
+border: 1px solid #ddd;
+border-radius: 5px;
+margin-bottom: 10px;
+padding: 10px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.qa-item:hover {
+background-color: #e5e5e5;
+}
+
+.qa-question {
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.qa-answer {
+display: none;
+}
+.text-center {
+background-color: rgb(255, 255, 255);
+font-size: 17px;
+font-style: oblique;
+}
+.card-header {
+background-color: #6bb4f5;
+color: white;
+font-weight: bold;
+}
+.card {
+border: none;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+max-width: 100%;
+max-height: fit-content;
+}

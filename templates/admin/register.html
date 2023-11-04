@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup</title>
+    <!-- AdminLTE 3 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/css/adminlte.min.css">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Add your custom styles here */
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .signup-box {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body class="hold-transition login-page">
+    <div class="signup-box">
+        <div class="login-logo">
+            <a href="/signup"><b>Admin</b> Signup</a>
+        </div>
+        <div class="card">
+            <div class="card-body signup-card-body">
+                <p class="login-box-msg">Create an account to get started</p>
+                <form id="signupForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- AdminLTE 3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/js/adminlte.min.js"></script>
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/static/js/script_signup.js"></script>
+</body>
+
+</html>

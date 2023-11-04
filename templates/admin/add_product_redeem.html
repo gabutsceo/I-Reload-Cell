@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+
+    <style>
+/* Sidebar saat terlipat */
+body.sidebar-collapse .main-sidebar {
+    width: 80px;
+    transition: width 0.3s ease;
+}
+
+/* Menyembunyikan submenu */
+body.sidebar-collapse .main-sidebar .nav-treeview {
+    display: none;
+}
+
+/* Menyembunyikan teks merk */
+body.sidebar-collapse .main-sidebar .brand-text {
+    display: none;
+}
+
+/* Mengubah ukuran logo merk ketika terlipat */
+body.sidebar-collapse .main-sidebar .brand-image {
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Mengatur tinggi dan posisi vertical tengah pada tautan navigasi */
+body.sidebar-collapse .main-sidebar .nav-sidebar .nav-item .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+/* Mengatur margin ikon dan teks navigasi */
+body.sidebar-collapse .main-sidebar .nav-sidebar .nav-item .nav-link .nav-icon,
+body.sidebar-collapse .main-sidebar .nav-sidebar .nav-item .nav-link .nav-text {
+    margin: 0;
+    transition: margin 0.3s ease;
+    margin-left: 0;
+}
+
+/* Perubahan posisi saat di-klik */
+body.sidebar-collapse .main-sidebar .nav-sidebar .nav-item .nav-link.active .nav-icon,
+body.sidebar-collapse .main-sidebar .nav-sidebar .nav-item .nav-link.active .nav-text {
+    margin-left: 5px;
+}
+
+/* Mengatur animasi perubahan ukuran logo kecil */
+.small-logo {
+    width: 20px;
+    height: 25px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Mengatur posisi dan ukuran logo merk saat terlipat */
+body.sidebar-collapse .brand-link .brand-image {
+    line-height: .8;
+    margin-top: -11px;
+    max-height: 37px;
+    width: auto;
+}
+
+body.sidebar-collapse .brand-link .brand-image img {
+    max-height: 100%;
+    width: auto;
+}
+
+/* Mengatur border dan padding pada merk saat terlipat */
+.sidebar-dark .brand-link {
+    border-bottom: 1px solid #494c4e;
+    padding: 17px 4px 33px;
+}
+
+/* Elevasi dan bayangan pada sidebar */
+.main-sidebar.elevation-4 {
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.navbar {
+    background-color: #5d9dfc;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.navbar-menu a:hover {
+    color: #41e3ff;
+}
+
+.welcome-text {
+    font-weight: bold;
+}
+
+/* Sidebar */
+.main-sidebar {
+    background-color: #343a40;
+    color: #ffffff;
+    height: calc(100% - (3.5rem + 1px));
+    padding-bottom: 0;
+    padding-left: -5.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0;
+}
+
+/* CSS Kustom untuk Navbar */
+.navbar {
+    background-color: #5d9dfc; /* Warna background biru */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.navbar-menu a:hover {
+    color: #41e3ff; /* Warna saat hover */
+}
+
+.welcome-text {
+    font-weight: bold; /* Membuat teks "Selamat Datang" menjadi bold */
+}
+/* CSS Kustom untuk Sidebar */
+.main-sidebar {
+    background-color: #343a40; /* Warna latar belakang sidebar */
+    color: #ffffff; /* Warna teks di dalam sidebar */
+}
+
+.main-sidebar .nav-sidebar .nav-item .nav-link {
+    color: #ffffff; /* Warna teks untuk tautan navigasi */
+}
+
+.main-sidebar .nav-sidebar .nav-item .nav-link:hover {
+    background-color: #555d66; /* Warna latar belakang saat tautan dinavigasi */
+}
+
+.main-sidebar .brand-link {
+    border-bottom: 1px solid #ffffff; /* Garis bawah pada merk sidebar */
+    padding: 17px 4px 33px;
+}
+
+/* Elevasi dan bayangan pada sidebar */
+.main-sidebar.elevation-4 {
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS Kustom untuk Tautan Navigasi Aktif */
+.main-sidebar .nav-sidebar .nav-item .nav-link.active {
+    background-color: #6c757d; /* Warna latar belakang saat tautan aktif */
+}
+
+/* Responsif di Mobile */
+@media (max-width: 768px) {
+body.sidebar-collapse .main-sidebar {
+        width: 0;
+    }
+
+    /* Tampilkan ikon hamburger di navbar untuk membuka sidebar */
+.navbar-toggler {
+        display: block;
+    }
+
+.navbar-menu {
+        display: none;
+    }
+
+    /* Tampilkan menu sidebar saat hamburger diklik */
+body.sidebar-collapse .main-sidebar {
+        width: 230px;
+    }
+
+.navbar-menu {
+        display: flex;
+    }
+}
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  border-color: #ccc;
+  background-color: #fff;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+input[type="checkbox"] {
+    width: 17px;
+    height: 14px;
+    margin-right: 2px;
+    border-radius: 3px;
+}
+
+
+.form-group.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@media (max-width: 576px) {
+  .form-container {
+    width: 100%;
+  }
+}
+input[type="submit"]:hover {
+  background-color: #333;
+}
+/* CSS untuk membuat checkbox sejajar dengan teks */
+.form-group input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+.form-group label[for="enable_expiry_date"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+</style>
+</head>
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Pengguna admin dengan ikon -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-user-cog fa-lg"></i>
+                    <span>{{ session['admin_username'] }}</span> <!-- Menggunakan variabel sesi untuk menampilkan nama pengguna admin -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout_admin">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="/admin" class="brand-link">
+                <img src="http://127.0.0.1:5000/favicon.ico" alt="I Reload Cell Logo Small" class="brand-image img-circle elevation-3" style="opacity: 0.8">
+                <span class="brand-text font-weight-light">Admin Panel</span>
+                </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/admin" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i> <!-- Ganti kelas ikon di sini dengan sesuai -->
+                                <p>Home</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>Users</p>
+                                <i class="fas fa-angle-left right"></i>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/create-user.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add User</p>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="users.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Users</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-key"></i> 
+                                <p>Kode Claim</p>
+                                <i class="fas fa-angle-left right"></i>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="create_code.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Code</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="list_code.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Code Klaim</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-gift"></i> 
+                                <p>Product Redeem</p>
+                                <i class="fas fa-angle-left right"></i>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="add_product_redeem.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Product Redeem</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="list_product_redeem.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Product Redeem</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                            <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>Settings</p>
+                                <i class="fas fa-angle-left right"></i>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="settings.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>General Setting</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="smtp_setting.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Setting Smtp</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Add Product</h1>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/list_product_redeem.html">List Product</a></li>
+                                <li class="breadcrumb-item active">Add Product</li>
+                            </ol>                            
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+        
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-container">
+                                        <form id="addProductForm">
+                                            <div class="form-group">
+                                                <label for="judul">Judul</label>
+                                                <input type="text" class="form-control" id="judul" name="judul" required="Judul Product">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name_product">Product Name</label>
+                                                <input type="text" class="form-control" id="name_product" name="name_product" required="Nama Product">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <textarea class="form-control" id="description" name="description" rows="3" required="Deskripsi Product"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="point_cost">Point Cost</label>
+                                                <input type="number" class="form-control" id="point_cost" name="point_cost" required min="1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="image_url">Image URL</label>
+                                                <input type="text" class="form-control" id="image_url" name="image_url" required minlength="1">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-primary" value="Add Product">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- /.content -->
+        </div>
+<!-- /.content-wrapper -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <!-- Default to the left -->
+            <strong>Footer goes here &copy; 2023</strong>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- AdminLTE 3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    var sidebarCollapsed = true;
+
+    $('[data-widget="pushmenu"]').on('click', function() {
+        if (sidebarCollapsed) {
+            // Jika sidebar sudah terlipat, buka kembali
+            $("body").removeClass('sidebar-collapse');
+            sidebarCollapsed = false;
+            // Kembalikan ukuran logo ke aslinya
+            $('.brand-image').removeClass('small-logo');
+        } else {
+            // Jika sidebar belum terlipat, lipat
+            $("body").addClass('sidebar-collapse');
+            sidebarCollapsed = true;
+            // Ubah ukuran logo menjadi lebih kecil
+            $('.brand-image').addClass('small-logo');
+        }
+    })});
+
+    $(document).ready(function() {
+    // Handle form submission
+    $("#productForm").submit(function(event) {
+        event.preventDefault();
+
+        // Serialize form data
+        var formData = $(this).serialize();
+
+        // Send AJAX request to add product
+        $.ajax({
+            type: "POST",
+            url: "/api/tambah_produk",
+            data: formData,
+            success: function(response) {
+                // Handle success response
+                if (response.success) {
+                    // Show SweetAlert2 success message
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Redirect to the list of products or perform other actions as needed
+                            window.location.href = "/admin/admin.html";
+                        }
+                    });
+                } else {
+                    // Handle error response with SweetAlert2
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.error,
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle AJAX error with SweetAlert2
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred while processing your request.',
+                });
+                console.error(error);
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+</body>
+
+</html>

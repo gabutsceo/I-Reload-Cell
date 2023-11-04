@@ -1,0 +1,83 @@
+body {
+background-color: #e3e6ec;
+position: relative;
+background-size: cover;
+font-family: Arial, sans-serif;
+background-image: url(https://www.bootdey.com/img/overlay.svg), linear-gradient(45deg, #eff3f9 0%, #eff3f9 100%);
+z-index: 0;
+padding: 3rem 0 2rem;
+}
+.header {
+padding: 10px 0;
+font-size: 16px;
+}
+
+.header .navbar-brand,
+.header .nav-link {
+color: white;
+}
+
+.content {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 88vh;
+}
+
+.footer {
+background-color: #2c353d;
+color: #f8f9fa;
+padding: 10px 0;
+text-align: center;
+width: 100%;
+position: fixed;
+bottom: 0;
+}
+
+.footer p {
+margin: 0;
+}
+
+.modal-dialog {
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+  }
+
+.modal-header {
+background-color: #b8c2cc; /* Biru muda */
+color: rgb(0, 0, 0);
+}
+
+.text-center {
+background-color: rgb(255, 255, 255);
+font-size: 17px;
+font-style: oblique;
+}
+
+.spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+/* Style untuk card */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: white;
+}
+/* Style untuk tombol klaim */
+#claimBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#claimBtn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,247 @@
+body {
+background-color: #e3e6ec;
+position: relative;
+background-size: cover;
+font-family: Arial, sans-serif;
+background-image: url(https://www.bootdey.com/img/overlay.svg), linear-gradient(45deg, #eff3f9 0%, #eff3f9 100%);
+z-index: 0;
+padding: 3rem 0 2rem;
+}
+
+.content {
+padding: 0px;
+display: flex;
+flex-direction: column;
+height: 100vh;
+position: relative;
+align-content: stretch;
+justify-content: space-between;
+}
+
+
+.footer {
+background-color: #2c353d;
+color: #f8f9fa;
+padding: 10px 0;
+text-align: center;
+width: 100%;
+position: fixed;
+z-index: 1;
+bottom: 0;
+}
+
+.footer p {
+margin: 0;
+}
+
+.user-avatar {
+width: 50px;
+height: 50px;
+object-fit: cover;
+border-radius: 50%;
+margin-right: 10px;
+}
+
+.user-info-card {
+margin-bottom: 20px;
+}
+
+.notification-container {
+    position: fixed;
+    top: 70px; /* Sesuaikan posisi dengan navbar Anda */
+    right: 0;
+    max-width: 300px;
+    margin-right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slide-in 0.5s, slide-out 0.5s 5s forwards;
+    display: none;
+}
+
+.notification-card {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.notification-text {
+    margin-left: 10px;
+}
+
+.notification-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+@keyframes slide-in {
+    from {
+        right: -800px;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: 0px;
+    }
+}
+
+
+.card-header {
+padding: 0.15rem 1.25rem;
+margin-bottom: 10;
+background-color: rgba(0,0,0,.03);
+border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+
+.container {
+width: 100%;
+padding-right: 14px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+margin-bottom: auto;
+}
+
+
+/* Tambahkan media query untuk tampilan mobile (kurang dari 768px) */
+@media (max-width: 768px) {
+.content {
+padding-bottom: 70px; /* Tambahkan padding bawah untuk memberi jarak dengan footer */
+    }
+}
+
+/* CSS to control the greeting message on mobile */
+@media (max-width: 767px) {
+    .greeting-container {
+        padding: 10px; /* Add some padding to the greeting container */
+        text-align: center; /* Center the greeting text */
+    }
+}
+/* CSS for d-flex - you can continue with your existing styles */
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: flex-start;
+}
+
+
+.point-history {
+    margin-bottom: 120px;
+    padding: 20px;
+}
+
+.transaction-history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.transaction-card {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.transaction-list {
+    list-style: none;
+    padding: 0;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 10px 0;
+}
+
+.transaction-item i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.transaction-item.earned i {
+    color: #4CAF50;
+}
+
+.transaction-item.redeemed i {
+    color: #F44336;
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.no-transaction {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.modal-dialog {
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+}
+
+.modal-header {
+background-color: #b8c2cc;
+color: rgb(0, 0, 0);
+}
+
+.text-center {
+background-color: rgb(255, 255, 255);
+font-size: 17px;
+font-style: oblique;
+}
+
+/* Warna untuk transaksi positif (mendapatkan poin) */
+.points.positive {
+    color: green;
+}
+
+/* Warna untuk transaksi negatif (menggunakan poin) */
+.points.negative {
+    color: red;
+}
+
+.red-text { /* Warna merah untuk user.points */
+    color: red;
+}
+
+.green-text {   /* Warna hijau untuk points_in_idr */
+    color: green;
+}

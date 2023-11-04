@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta property="og:title" content="I Reload Cell" />
+    <meta property="og:site_name" content="I Reload Cell">
+    <meta property="og:image" content="/static/images/logo_1.png" />
+    <meta property="og:description" content="I Reload Cell adalah web platform penukaran point eksklusif bagi pembeli di toko I Reload Cell. Dengan I Reload Cell, Anda dapat menukarkan point yang Anda peroleh dari setiap pembelian Anda di toko I Reload Cell untuk berbagai macam hadiah menarik." />
+    <meta name="description" content="I Reload Cell hadir untuk memberikan pengalaman terbaik kepada pelanggan kami." />
+    <meta name="keywords" content="">
+    <title>Claim Point - I Reload Cell</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon/ireload.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/static/css/style_claim_point.css">
+
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <a class="navbar-brand" href="{{ url_for('dashboard') }}">I Reload Cell</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/claim_point">Claim Point</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/redeem">Penukaran Point</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+<!-- Card untuk Klaim Point -->
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <h2 class="text-center">Tukarkan Code Claim Anda</h2>
+                        <form method="post" id="claim-form">
+                            <div class="form-group">
+                                <label for="claim_code">Enter Klaim Code:</label>
+                                <input type="text" class="form-control" id="claim_code" name="claim_code" required>
+                            </div>
+                            <div class="spinner-container">
+                                <div class="spinner-border text-primary mb-2" role="status" id="claimSpinner" style="display: none;"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" id="claimBtn">Klaim Point</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Redeem Poin -->
+<div class="modal fade" id="claimPointModal" tabindex="-1" role="dialog" aria-labelledby="claimPointModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="claimPointModalLabel">Cara Klaim Poin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Hi {{ session.username }},</p>
+                <p>Langkah-langkah untuk klaim poin di Toko I Reload Cell adalah sebagai berikut:</p>
+                <p>1. Dapatkan kode claim. Kode claim hanya didapatkan saat melakukan transaksi di Toko I Reload Cell. Setiap transaksi akan mendapatkan kode claim yang berbeda.</p>
+                <p>2. Kunjungi halaman claim point di website I Reload Cell.</p>
+                <p>3. Masukkan kode claim ABC123 yang Anda dapatkan dari langkah sebelumnya.</p>
+                <p>4. Klik tombol "Klaim Poin" untuk memproses klaim poin Anda.</p>
+                <p>5. Cek status klaim poin Anda di halaman dashboard pada Riwayat Point.</p>
+                <p><strong>Syarat & Ketentuan:</strong></p>
+                <ul>
+                    <li>Setiap transaksi akan mendapatkan 1 kode claim.</li>
+                    <li>Kode claim berlaku selama 30 hari sejak tanggal transaksi.</li>
+                    <li>Poin yang telah diklaim tidak dapat dibatalkan.</li>
+                    <li>Poin dapat ditukar dengan berbagai hadiah menarik.</li>
+                    <li>Toko I Reload Cell berhak mengubah syarat dan ketentuan klaim poin sewaktu-waktu.</li>
+                </ul>
+                <p>Jika Anda memiliki pertanyaan lebih lanjut, silakan hubungi layanan pelanggan kami.</p>
+                <p><strong><span style="color: red;">"Dengan menekan tombol 'Setuju', Anda mengkonfirmasi persetujuan terhadap Syarat & Ketentuan yang berlaku."</span></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Setuju</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <div class="footer">
+        <div class="container">
+            <p>&copy; I Reload Cell 2023. <a href="https://reloadcell.my.id/">All rights reserved.</a></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and other scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script>
+// Dapatkan token CSRF dari cookie
+function getCSRFToken() {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith('_csrf_token=')) {
+            return cookie.substring('_csrf_token='.length, cookie.length);
+        }
+    }
+    return null;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const claimForm = document.getElementById('claim-form');
+    const claimBtn = document.getElementById('claimBtn');
+    const claimSpinner = document.getElementById('claimSpinner');
+
+    claimForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const claimCode = document.getElementById('claim_code').value;
+        const csrfToken = getCSRFToken();
+
+        // Menampilkan spinner saat klaim poin sedang diproses
+        claimBtn.style.display = 'none';
+        claimSpinner.style.display = 'inline-block';
+
+        fetch('/claim_point', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrfToken
+            },
+            body: `claim_code=${claimCode}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Menyembunyikan spinner setelah klaim poin selesai diproses (dengan penundaan selama 3 detik)
+            setTimeout(function() {
+                claimBtn.style.display = 'inline-block';
+                claimSpinner.style.display = 'none';
+
+                let soundFile = '/static/audio/Info_swal_notif_sukses.mp3'; // Default sound file
+                let alertIcon = 'success';
+                let alertTitle = 'Sukses!';
+                let redirectUrl = '/dashboard';
+
+                if (!data.success) {
+                    alertIcon = 'info';
+                    alertTitle = 'Info!';
+                    soundFile = '/static/audio/Info_swal_notif.mp4'; // Ganti file suara untuk info alert
+                }
+
+                // SweetAlert2 message dengan suara
+                Swal.fire({
+                    icon: alertIcon,
+                    title: alertTitle,
+                    text: data.message,
+                    timer: 7000, // Durasi notifikasi (ms)
+                    timerProgressBar: true, // Menampilkan progress bar durasi
+                    showConfirmButton: false, // Tidak menampilkan tombol OK
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOut'
+                    },
+                    didOpen: () => {
+                        // Memutar suara notifikasi
+                        const audio = new Audio(soundFile);
+                        audio.play();
+                        document.getElementById('claim_code').value = '';
+                    },
+                }).then((result) => {
+                    // Mengosongkan nilai input claim code setelah notifikasi ditutup
+                    document.getElementById('claim_code').value = '';
+
+                    // Cek apakah judul notifikasi adalah "Sukses!"
+                    if (alertTitle === 'Sukses!') {
+                        // Redirect to dashboard jika notifikasi Sukses!
+                        window.location.href = redirectUrl;
+                    }
+                });
+            }, 3000); // Penundaan selama 3 detik sebelum menyembunyikan spinner
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Menyembunyikan spinner setelah klaim poin selesai diproses (jika terjadi kesalahan)
+            claimBtn.style.display = 'inline-block';
+            claimSpinner.style.display = 'none';
+        });
+    });
+
+    // Tampilkan modal klaim poin ketika halaman dimuat
+    $('#claimPointModal').modal('show');
+
+    // Blur background content saat modal muncul
+    $('#claimPointModal').on('show.bs.modal', function () {
+        $('.content').css('filter', 'blur(5px)');
+    });
+
+    // Hapus blur saat modal ditutup
+    $('#claimPointModal').on('hidden.bs.modal', function () {
+        $('.content').css('filter', 'none');
+    });
+});
+
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        const userIP = data.ip;
+        // Kirim alamat IP pengunjung ke server
+        fetch('/log-visit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ip: userIP }),
+        });
+    });
+
+</script>
+</body>
+
+</html>

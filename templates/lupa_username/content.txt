@@ -1,0 +1,12 @@
+Informasi Username Anda
+
+Halo {{ full_name }},
+
+Username Anda adalah: {{ username }}
+
+Terima kasih atas penggunaan layanan kami.
+
+Best regards,
+Tim Dukungan I Reload Cell
+
+Email ini dikirimkan secara otomatis. Mohon jangan membalas email ini.
