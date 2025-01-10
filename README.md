@@ -34,7 +34,7 @@ Untuk informasi lebih lanjut, Anda dapat menghubungi kami melalui:
 
 ## Pembuat
 
-Musa Amrullah
+Noah Cair
 
 ## Persyaratan dan Ketentuan
 
